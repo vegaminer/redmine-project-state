@@ -16,6 +16,7 @@ Redmine::Plugin.register :project_state do
     :partial => 'settings/project_state_settings'
 end
 
-ActionDispatch::Reloader.to_prepare do
+#ActionDispatch::Reloader.to_prepare do
+((Rails.version > "5")? ActiveSupport::Reloader : ActionDispatch::Callbacks).to_prepare do
   SettingsHelper.send :include, ProjectStateSettingsHelper
 end

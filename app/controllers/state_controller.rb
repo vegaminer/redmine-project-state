@@ -3,7 +3,7 @@ require 'securerandom'
 class StateController < ApplicationController
   default_search_scope :issues
 
-  before_filter :find_project, :authorize, :only => :index
+  before_action :find_project, :authorize, :only => :index
 
   include StateQueriesHelper
   include BoardsHelper
